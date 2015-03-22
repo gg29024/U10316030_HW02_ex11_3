@@ -45,69 +45,69 @@ class TestAccount{
 	}
 
 	//Return id
-	int getID(){
+	public int getID(){
 	
 		return id;
 		
 	}
 	
 	//Set a new id
-	void setID(int id){
+	public void setID(int id){
 	
 		this.id = id;
 	
 	}
 	
 	//Return balance
-	double getBalance(){
+	public double getBalance(){
 	
 		return balance;
 	
 	}
 	//Set a new balance
-	void setBalance(double balance){
+	public void setBalance(double balance){
 	
 		this.balance = balance;
 	
 	}
 	
 	//Set a new annualInterestRater
-	void setAnnualInterestRate(double annualInterestRate){
+	public void setAnnualInterestRate(double annualInterestRate){
 	
 		this.annualInterestRate = annualInterestRate;
 	
 	}
 	
 	//Get dateCreated
-	java.util.Date getDateCreated(){
+	public java.util.Date getDateCreated(){
 	
 		return dateCreated;
 		
 	}
 	
 	//Return MonthlyInterestRate
-	double getMonthlyInterestRate(){
+	public double getMonthlyInterestRate(){
 	
 		return annualInterestRate / 12;
 	
 	}
 	
 	//Return MonthlyInterest
-	double getMonthlyInterest(){
+	public double getMonthlyInterest(){
 	
 		return balance*getMonthlyInterestRate()/100;
 	
 	}
 	
 	//領出金額
-	void Withdraw(double take){
+	public void Withdraw(double take){
 	
 		balance = balance - take;
 		
 	}
 	
 	//存入金額
-	void Deposit(double store){
+	public void Deposit(double store){
 	
 		balance = balance + store;
 	
@@ -131,6 +131,7 @@ class CheckingAccount extends TestAccount{
 	private double take = 0;
 	private double store = 0;
 	
+	
 	CheckingAccount(){
 		
 		super();
@@ -150,10 +151,10 @@ class CheckingAccount extends TestAccount{
 		id = input.nextInt();
 		super.setID(id);
 		
-		super.setBalance(20000);
+		setBalance(20000);
 		System.out.println("You have $" + getBalance());
 		
-		super.setAnnualInterestRate();
+		super.setAnnualInterestRate(4.5);
 		
 		
 		System.out.print("How much do you take? ");
@@ -174,11 +175,11 @@ class CheckingAccount extends TestAccount{
 			if((super.getBalance() + store) < 0){
 				System.out.println("You need to store money to balance.");
 			}
-			super.deposit(store);
+			super.Deposit(store);
 			
 		}
 		
-		
+		System.out.println();
 	}
 	
 	public String toString(){
@@ -214,10 +215,10 @@ class SavingAccount extends TestAccount{
 		id = input.nextInt();
 		super.setID(id);
 		
-		super.setBalance(20000);
+		setBalance(20000);
 		System.out.println("You have $" + getBalance());
 		
-		super.setAnnualInterestRate();
+		super.setAnnualInterestRate(4.5);
 		
 		
 		while(take > 20000){
@@ -235,8 +236,8 @@ class SavingAccount extends TestAccount{
 		
 		System.out.print("How much do you store? ");
 		store = input.nextDouble();
-		super.deposit(store);
-		
+		super.Deposit(store);
+		System.out.println();
 	}
 	
 	public String toString(){
