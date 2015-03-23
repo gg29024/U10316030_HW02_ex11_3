@@ -9,12 +9,15 @@ public class Account{
 	//Main method
     public static void main(String[] args) {
 		//Created an object,¨Ãµ¹¤J­È
-		TestAccount object = new TestAccount(1122,20000);
+		CheckingAccount object = new CheckingAccount();
+		SavingAccount object2 = new SavingAccount();
 		//©I¥smethod
-		object.Withdraw(2500);
-		object.Deposit(3000);
-		object.setAnnualInterestRate(4.5);
+		object.Checking();
 		System.out.print(object.toString());
+		object2.Saving();	
+		System.out.print(object2.toString());
+
+	
 	
 	}
 
@@ -117,7 +120,7 @@ class TestAccount{
 	//Return a string representation of this object
 	public String toString(){
 	
-		return "Date: " + getDateCreated() + "  MonthlyInterest: " + getMonthlyInterest() + "  Balance: " +getBalance();
+		return "Date: " + getDateCreated() + "  MonthlyInterest: " + getMonthlyInterest() + "  Balance: " +getBalance()+ "\n";
 	
 	}
 
@@ -221,7 +224,7 @@ class SavingAccount extends TestAccount{
 		super.setAnnualInterestRate(4.5);
 		
 		
-		while(take > 20000){
+		do{
 			
 			System.out.print("How much do you take? ");
 			take = input.nextDouble();
@@ -230,7 +233,7 @@ class SavingAccount extends TestAccount{
 				System.out.print("You have no enough money. \nPlease enter again. ");
 			}
 				
-		}
+		}while(take > 20000);
 		super.Withdraw(take);
 		
 		
