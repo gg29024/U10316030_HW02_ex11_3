@@ -126,34 +126,39 @@ class TestAccount{
 
 }
 
-
+//CheckingAccount class
 class CheckingAccount extends TestAccount{
-
+	//Data fields
 	private int id = 0;
 	private double balance = 0;
 	private double take = 0;
 	private double store = 0;
 	
-	
+	//Construct a no-arg constructor
 	CheckingAccount(){
 		
 		super();
 		
 	}
 	
+	//Constructor with the specified id and balance
 	CheckingAccount(int id, double balance){
 		
 		super(id, balance);
 
 	}
 	
+	//Checking method
 	public void Checking(){
 		
+		//輸入使用者ID
 		Scanner input = new Scanner(System.in);
 		System.out.print("Please enter your ID: ");
 		id = input.nextInt();
 		super.setID(id);
 		
+		
+		//一開始使用者有20000
 		setBalance(20000);
 		System.out.println("You have $" + getBalance());
 		
@@ -163,6 +168,7 @@ class CheckingAccount extends TestAccount{
 		System.out.print("How much do you take? ");
 		take = input.nextDouble();
 			
+		//錢不夠 要先存錢
 		if(take > 20000){
 			System.out.print("You have no enough money. \nYou need to store money. ");
 		}
@@ -174,7 +180,7 @@ class CheckingAccount extends TestAccount{
 			
 			System.out.print("How much do you store? ");
 			store = input.nextDouble();
-			
+			//存入的錢仍不夠提就要再存錢
 			if((super.getBalance() + store) < 0){
 				System.out.println("You need to store money to balance.");
 			}
@@ -185,6 +191,7 @@ class CheckingAccount extends TestAccount{
 		System.out.println();
 	}
 	
+	//Return a string representation of this object
 	public String toString(){
 		return super.toString();
 	}
@@ -193,37 +200,42 @@ class CheckingAccount extends TestAccount{
 
 
 class SavingAccount extends TestAccount{
-	
+	//Data fields
 	private int id = 0;
 	private double balance = 0;
 	private double take = 0;
 	private double store = 0;
 	
+	//Construct a no-arg constructor
 	SavingAccount(){
 		
 		super();
 		
 	}
 	
+	//Constructor with the specified id and balance
 	SavingAccount(int id, double balance){
 		
 		super(id, balance);
 
 	}
 	
+	//Saving method
 	public void Saving(){
 		
+		//輸入使用者ID
 		Scanner input = new Scanner(System.in);
 		System.out.print("Please enter your ID: ");
 		id = input.nextInt();
 		super.setID(id);
 		
+		//一開始使用者有20000
 		setBalance(20000);
 		System.out.println("You have $" + getBalance());
 		
 		super.setAnnualInterestRate(4.5);
 		
-		
+		//錢不夠不能提 要再輸入一次你提的錢
 		do{
 			
 			System.out.print("How much do you take? ");
@@ -243,6 +255,7 @@ class SavingAccount extends TestAccount{
 		System.out.println();
 	}
 	
+	//Return a string representation of this object
 	public String toString(){
 		return super.toString();
 	}
